@@ -17,3 +17,5 @@ J'adore apprendre !
 ### click
 
 👉 Test ma calculatrice[https://kensleyprogramming01-prog.github.io/Monmon-aventure/calculatrice.html
+
+Améliore le titre de la calculatrice
