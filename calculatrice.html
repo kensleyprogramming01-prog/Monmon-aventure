@@ -1,75 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ma calculatrice</title>
     
-    <style type="text/css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: hsl(0, 0%, 95%);
-        }
-        .calculator {
             font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+
+        .calculator {
             background-color: hsl(0, 0%, 15%);
             border-radius: 15px;
-            max-width: 500px;
-            overflow: hidden;
-            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+
         #display {
             width: 100%;
-            padding: 20px;
-            font-size: 5rem;
+            padding: 15px;
+            font-size: 2.5rem;
             text-align: right;
             border: none;
             background: hsl(0, 0%, 20%);
             color: white;
             border-radius: 10px;
             margin-bottom: 10px;
-            box-sizing: border-box;
+            overflow: hidden;
         }
+
         #keys {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
+
         button {
             width: 100%;
-            aspect-ratio: 1/1;
+            aspect-ratio: 1 / 1;
             border-radius: 50%;
             border: none;
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-family: Arial, sans-serif;
             background-color: hsl(0, 0%, 30%);
             font-weight: bold;
             cursor: pointer;
+            transition: background 0.2s;
         }
+
         button:hover {
             background-color: hsl(0, 0%, 40%);
         }
+
         button:active {
             background-color: hsl(0, 0%, 50%);
         }
+
         .operator-btn {
             background-color: hsl(35, 100%, 55%);
         }
+
         .operator-btn:hover {
             background-color: hsl(35, 100%, 65%);
         }
-        .operator-btn:active {
-            background-color: hsl(35, 100%, 75%);
-        }
+
         .zero-btn {
             grid-column: span 2;
             border-radius: 50px;
+            aspect-ratio: auto;
+            height: 100%;
+        }
+
+        .clear-btn {
+            grid-column: span 4;
+            border-radius: 10px;
+            aspect-ratio: auto;
+            height: 50px;
+            font-size: 1.2rem;
+            background-color: hsl(0, 80%, 50%);
+        }
+
+        /* 📱 Adaptation aux petits écrans */
+        @media (max-width: 400px) {
+            #display {
+                font-size: 2rem;
+                padding: 10px;
+            }
+            button {
+                font-size: 1.2rem;
+            }
+            .calculator {
+                padding: 10px;
+            }
+            #keys {
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -81,23 +121,23 @@
             <button onclick="appendToDisplay('8')">8</button>
             <button onclick="appendToDisplay('9')">9</button>
             <button onclick="appendToDisplay('/')" class="operator-btn">÷</button>
-            
+
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
             <button onclick="appendToDisplay('*')" class="operator-btn">×</button>
-            
+
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
-            
+            <button onclick="appendToDisplay('-')" class="operator-btn">−</button>
+
             <button onclick="appendToDisplay('0')" class="zero-btn">0</button>
             <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="calCulate()" class="operator-btn">=</button>
             <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
-            
-            <button onclick="clearDisplay()" class="operator-btn" style="grid-column: span 4; border-radius: 10px; aspect-ratio: auto; height: 60px;">C</button>
+            <button onclick="calCulate()" class="operator-btn">=</button>
+
+            <button onclick="clearDisplay()" class="clear-btn">C</button>
         </div>
     </div>
 
@@ -108,9 +148,7 @@
             if (input === '.') {
                 const parts = display.value.split(/[\+\-\*\/]/);
                 const currentNumber = parts[parts.length - 1];
-                if (currentNumber.includes('.')) {
-                    return;
-                }
+                if (currentNumber.includes('.')) return;
             }
             display.value += input;
         }
