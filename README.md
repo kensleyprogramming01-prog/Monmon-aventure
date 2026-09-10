@@ -10,7 +10,7 @@ J'adore apprendre !
 
 ## 🧮 Ma calculatrice
 
-[👉 Clique ici pour voir ma calculatrice](calculatrice.html)
+[👉 Clique ici pour voir mon code de ma calculatrice](calculatrice.html)
 
 
 
