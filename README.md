@@ -7,3 +7,7 @@ J'ai créé ce projet pour m'entraîner et découvrir comment fonctionne le cont
 C'est le début d'une grande aventure ! 🌟1
 
 J'adore apprendre !
+
+## 🧮 Ma calculatrice
+
+[👉 Clique ici pour voir ma calculatrice](calculatrice.html)
